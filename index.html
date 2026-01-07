@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Imperium Atelier</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#f6f4ef;
+      --fg:#1c1c1c;
+      --accent:#111;
+      --muted:#e0ded8;
+      --card:#fff;
+      --brand-color:#111;
+      --beige:#eae6dc;
+      --gap:24px;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body {
+      margin: 0;
+      font-family: 'Inter', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      background-color: var(--bg);
+      color: var(--fg);
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.45;
+    }
+
+    /* Header */
+    header {
+      background-color: var(--accent);
+      color: var(--beige);
+      padding: 28px 20px;
+      position: sticky;
+      top:0;
+      z-index: 50;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    }
+    .container{
+      max-width:1100px;
+      margin:0 auto;
+      padding:0 20px;
+    }
+    header .brand {
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+    }
+    .brand h1{
+      font-family:'Playfair Display', serif;
+      margin:0;
+      font-size:22px;
+      letter-spacing:2px;
+    }
+    nav{
+      margin-top:12px;
+      display:flex;
+      justify-content:center;
+      gap:18px;
+      flex-wrap:wrap;
+    }
+    nav a{
+      color:var(--beige);
+      text-decoration:none;
+      font-size:13px;
+      letter-spacing:1px;
+      padding:6px 8px;
+      border-radius:6px;
+    }
+    nav a:focus, nav a:hover{
+      background:rgba(255,255,255,0.03);
+      outline:2px solid rgba(255,255,255,0.06);
+    }
+
+    /* Hero / Intro */
+    .hero{
+      padding:60px 0;
+      text-align:center;
+    }
+    .hero .eyebrow{
+      font-weight:600;
+      color:#666;
+      margin-bottom:10px;
+      letter-spacing:2px;
+      text-transform:uppercase;
+      font-size:12px;
+    }
+    .hero h2{
+      font-family:'Playfair Display', serif;
+      font-size:36px;
+      margin:6px 0 12px;
+      letter-spacing:2px;
+    }
+    .hero p{
+      max-width:720px;
+      margin:0 auto;
+      color:#444;
+      font-size:16px;
+    }
+
+    /* Products */
+    section{
+      padding:40px 0;
+    }
+    .products{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+      gap:var(--gap);
+      margin-top:28px;
+    }
+    .product{
+      background:var(--card);
+      border:1px solid var(--muted);
+      padding:22px;
+      text-align:center;
+      display:flex;
+      flex-direction:column;
+      gap:12px;
+      min-height:200px;
+    }
+    .product h3{
+      font-family:'Playfair Display', serif;
+      margin:0;
+      font-size:20px;
+    }
+    .product p{margin:0;color:#555;font-size:14px;flex:1}
+    .price{font-weight:600;margin-top:6px;letter-spacing:0.6px}
+    .actions{margin-top:12px}
+    .btn{
+      display:inline-block;
+      background:var(--brand-color);
+      color:var(--beige);
+      border:none;
+      padding:10px 18px;
+      font-size:13px;
+      letter-spacing:1px;
+      border-radius:6px;
+      cursor:pointer;
+      text-decoration:none;
+    }
+    .btn:focus,.btn:hover{background:#2a2a2a}
+
+    /* Contact */
+    .contact-grid{
+      display:grid;
+      grid-template-columns:1fr 380px;
+      gap:30px;
+      align-items:start;
+    }
+    .contact-card{
+      background:var(--card);
+      border:1px solid var(--muted);
+      padding:18px;
+    }
+    form label{display:block;font-size:13px;margin-bottom:6px;color:#333}
+    form input, form textarea{
+      width:100%;
+      padding:10px;
+      border:1px solid #ddd;
+      border-radius:6px;
+      font-size:14px;
+      margin-bottom:12px;
+      background:white;
+    }
+    form textarea{min-height:110px;resize:vertical}
+    .muted{color:#666;font-size:14px}
+
+    footer{
+      background:var(--accent);
+      color:var(--beige);
+      text-align:center;
+      padding:26px 20px;
+      font-size:13px;
+      margin-top:30px;
+    }
+
+    /* Modal */
+    .modal-backdrop{
+      position:fixed;
+      inset:0;
+      background:rgba(15,15,15,0.5);
+      display:none;
+      align-items:center;
+      justify-content:center;
+      z-index:100;
+      padding:20px;
+    }
+    .modal{
+      background:white;
+      border-radius:10px;
+      max-width:600px;
+      width:100%;
+      box-shadow:0 12px 40px rgba(0,0,0,0.25);
+      padding:20px;
+      outline: none;
+    }
+    .modal header{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
+    .close-btn{background:transparent;border:none;font-size:20px;cursor:pointer;color:#333}
+    @media (max-width:800px){
+      .contact-grid{grid-template-columns:1fr}
+      header .brand{flex-direction:column;align-items:center}
+      nav{justify-content:center}
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <div class="brand" role="banner">
+      <h1>IMPERIUM ATELIER</h1>
+      <div class="tag muted">Lusso e Tempo Eterno</div>
+    </div>
+
+    <nav role="navigation" aria-label="Menú principal">
+      <a href="#inicio">Inicio</a>
+      <a href="#coleccion">Colección</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section id="inicio" class="hero container" aria-labelledby="hero-title">
+    <div class="eyebrow">Sastrería · Hecho a mano</div>
+    <h2 id="hero-title">Elegancia que perdura</h2>
+    <p>
+      Imperium Atelier representa la elegancia heredada, la sastrería silenciosa y el lujo que no necesita explicación.
+      Cada pieza es creada con precisión, tradición y respeto por el tiempo.
+    </p>
+  </section>
+
+  <section id="coleccion" class="container" aria-labelledby="coleccion-title">
+    <h3 id="coleccion-title" style="font-family:'Playfair Display', serif; font-size:20px; margin:0 0 12px;">Colección</h3>
+
+    <div class="products" role="list">
+      <article class="product" role="listitem" data-name="Chaleco Clásico">
+        <h3>Chaleco Clásico</h3>
+        <p>Lana italiana, corte tradicional, acabado artesanal.</p>
+        <div class="price">$320 USD</div>
+        <div class="actions">
+          <button class="btn request-btn" type="button" data-product="Chaleco Clásico">Solicitar</button>
+        </div>
+      </article>
+
+      <article class="product" role="listitem" data-name="Blazer Heritage">
+        <h3>Blazer Heritage</h3>
+        <p>Silueta estructurada, inspiración europea.</p>
+        <div class="price">$580 USD</div>
+        <div class="actions">
+          <button class="btn request-btn" type="button" data-product="Blazer Heritage">Solicitar</button>
+        </div>
+      </article>
+
+      <article class="product" role="listitem" data-name="Pantalón Sastrero">
+        <h3>Pantalón Sastrero</h3>
+        <p>Cintura alta, caída perfecta, confección lenta.</p>
+        <div class="price">$260 USD</div>
+        <div class="actions">
+          <button class="btn request-btn" type="button" data-product="Pantalón Sastrero">Solicitar</button>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section id="contacto" class="container" aria-labelledby="contacto-title">
+    <h3 id="contacto-title" style="font-family:'Playfair Display', serif; font-size:20px; margin:0 0 12px;">Contacto</h3>
+
+    <div class="contact-grid">
+      <div class="contact-card">
+        <p class="muted">Pedidos privados · Atención personalizada</p>
+        <p>Email: <strong>imperiumatelier9@gmail.com</strong></p>
+        <p>Instagram: <strong>@imperiumatelier</strong></p>
+        <p class="muted" style="margin-top:12px">También puedes enviarnos una solicitud desde cualquier producto.</p>
+      </div>
+
+      <div class="contact-card" aria-labelledby="form-title">
+        <h4 id="form-title" style="margin-top:0;font-family:'Playfair Display', serif;">Enviar consulta</h4>
+        <form id="contact-form">
+          <label for="name">Nombre</label>
+          <input id="name" name="name" type="text" required>
+
+          <label for="email">Correo</label>
+          <input id="email" name="email" type="email" required>
+
+          <label for="message">Mensaje</label>
+          <textarea id="message" name="message" required></textarea>
+
+          <input type="hidden" id="product" name="product" value="">
+
+          <div style="display:flex;gap:10px;flex-wrap:wrap;">
+            <button class="btn" type="submit">Enviar por correo</button>
+            <a class="btn" href="mailto:imperiumatelier9@gmail.com" style="background:#777">Abrir email</a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="container">
+    © 2026 IMPERIUM ATELIER · TRADICIÓN & DISCRECIÓN
+  </div>
+</footer>
+
+<!-- Modal (para futuros formularios) -->
+<div class="modal-backdrop" id="modal" aria-hidden="true">
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <header>
+      <h3 id="modal-title" style="margin:0;font-family:'Playfair Display', serif;">Solicitud</h3>
+      <button class="close-btn" id="close-modal" aria-label="Cerrar">×</button>
+    </header>
+    <div id="modal-body">
+      <p class="muted">Formulario de solicitud próximamente.</p>
+    </div>
+  </div>
+</div>
+
+<script>
+// Enlazar botones de solicitar al formulario
+document.querySelectorAll('.request-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const prod = btn.getAttribute('data-product') || '';
+    const productField = document.getElementById('product');
+    if (productField) productField.value = prod;
+    // mostrar modal (simple)
+    const modal = document.getElementById('modal');
+    if (modal) {
+      modal.style.display = 'flex';
+      modal.setAttribute('aria-hidden', 'false');
+    }
+  });
+});
+
+// Cerrar modal
+const close = document.getElementById('close-modal');
+if (close) close.addEventListener('click', () => {
+  const modal = document.getElementById('modal');
+  if (modal) {
+    modal.style.display = 'none';
+    modal.setAttribute('aria-hidden', 'true');
+  }
+});
+
+// Envío del formulario (preparado para backend o mailto)
+document.getElementById('contact-form')?.addEventListener('submit', function(e){
+  e.preventDefault();
+  const name = document.getElementById('name').value;
+  const email = document.getElementById('email').value;
+  const message = document.getElementById('message').value;
+  const product = document.getElementById('product').value;
+
+  // Construir mailto como fallback
+  const subject = encodeURIComponent('Solicitud — ' + (product || 'Consulta'));
+  const body = encodeURIComponent('Nombre: ' + name + '\nCorreo: ' + email + '\nProducto: ' + product + '\n\n' + message);
+  window.location.href = 'mailto:imperiumatelier9@gmail.com?subject=' + subject + '&body=' + body;
+});
+</script>
+
+</body>
+</html>
