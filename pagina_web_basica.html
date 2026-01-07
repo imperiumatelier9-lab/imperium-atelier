@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Imperium Atelier</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Inter:wght@300;400&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background-color: #f6f4ef;
+      color: #1c1c1c;
+    }
+    header {
+      background-color: #111;
+      color: #eae6dc;
+      padding: 30px 20px;
+      text-align: center;
+    }
+    header h1 {
+      font-family: 'Playfair Display', serif;
+      letter-spacing: 2px;
+      margin: 0;
+    }
+    header p {
+      font-size: 14px;
+      letter-spacing: 1px;
+      margin-top: 8px;
+    }
+    nav {
+      margin-top: 20px;
+    }
+    nav a {
+      color: #eae6dc;
+      margin: 0 15px;
+      text-decoration: none;
+      font-size: 13px;
+      letter-spacing: 1px;
+    }
+    section {
+      max-width: 1100px;
+      margin: auto;
+      padding: 60px 20px;
+    }
+    .intro {
+      text-align: center;
+      max-width: 700px;
+      margin: auto;
+      font-size: 16px;
+    }
+    .products {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      margin-top: 50px;
+    }
+    .product {
+      background-color: #ffffff;
+      border: 1px solid #e0ded8;
+      padding: 25px;
+      text-align: center;
+    }
+    .product h3 {
+      font-family: 'Playfair Display', serif;
+      margin-bottom: 10px;
+    }
+    .product p {
+      font-size: 14px;
+      color: #444;
+    }
+    .price {
+      margin-top: 15px;
+      font-weight: 600;
+      letter-spacing: 1px;
+    }
+    button {
+      margin-top: 20px;
+      background-color: #111;
+      color: #eae6dc;
+      border: none;
+      padding: 10px 25px;
+      font-size: 12px;
+      letter-spacing: 1px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #333;
+    }
+    footer {
+      background-color: #111;
+      color: #eae6dc;
+      text-align: center;
+      padding: 30px 20px;
+      font-size: 12px;
+      letter-spacing: 1px;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>IMPERIUM ATELIER</h1>
+  <p>LUSSO E TEMPO ETERNO</p>
+  <nav>
+    <a href="#inicio">INICIO</a>
+    <a href="#coleccion">COLECCIÓN</a>
+    <a href="#contacto">CONTACTO</a>
+  </nav>
+</header>
+
+<section id="inicio">
+  <div class="intro">
+    <p>
+      Imperium Atelier representa la elegancia heredada, la sastrería silenciosa y el lujo que no necesita explicación.
+      Cada pieza es creada con precisión, tradición y respeto por el tiempo.
+    </p>
+  </div>
+</section>
+
+<section id="coleccion">
+  <div class="products">
+
+    <div class="product">
+      <h3>Chaleco Clásico</h3>
+      <p>Lana italiana, corte tradicional, acabado artesanal.</p>
+      <div class="price">$320 USD</div>
+      <button>Solicitar</button>
+    </div>
+
+    <div class="product">
+      <h3>Blazer Heritage</h3>
+      <p>Silueta estructurada, inspiración europea.</p>
+      <div class="price">$580 USD</div>
+      <button>Solicitar</button>
+    </div>
+
+    <div class="product">
+      <h3>Pantalón Sastrero</h3>
+      <p>Cintura alta, caída perfecta, confección lenta.</p>
+      <div class="price">$260 USD</div>
+      <button>Solicitar</button>
+    </div>
+
+  </div>
+</section>
+
+<section id="contacto">
+  <div class="intro">
+    <p>Pedidos privados · Atención personalizada</p>
+    <p>Email: contacto@imperiumatelier.com</p>
+    <p>Instagram: @imperiumatelier</p>
+  </div>
+</section>
+
+<footer>
+  © 2026 IMPERIUM ATELIER · TRADICIÓN & DISCRECIÓN
+</footer>
+
+<!-- Botón flotante WhatsApp -->
+<a href="https://wa.me/573000000000" target="_blank" class="whatsapp">WhatsApp</a>
+
+<style>
+.whatsapp {
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  background-color: #111;
+  color: #eae6dc;
+  padding: 12px 18px;
+  border-radius: 30px;
+  text-decoration: none;
+  font-size: 13px;
+  letter-spacing: 1px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+.whatsapp:hover {
+  background-color: #333;
+}
+</style>
+
+</body>
+</html>
